@@ -1,0 +1,256 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #f2e7e5;
+  font-family: sans-serif;
+}
+
+p {
+  margin-bottom: 0.5rem !important;
+  font-size: 15px !important;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* height: 9.6rem; */
+  /* padding: 0 4.8rem; */
+  position: relative;
+}
+
+.main-nav-list {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.btn-mobile-nav {
+  border: none;
+  background: none;
+  cursor: pointer;
+  visibility: hidden;
+}
+
+.icon-mobile-nav {
+  font-size: 4.8rem;
+  color: #333;
+}
+
+.icon-mobile-nav.close {
+  display: none;
+}
+
+.carousel_link {
+  color: rgb(99, 109, 136) !important;
+}
+
+.text-decoration-underline {
+  text-decoration: underline;
+}
+
+.wrapper {
+  /* width: 900px; */
+  min-height: auto;
+  margin: 20px auto;
+}
+.wrapper .row {
+  list-style: none;
+  padding: 0;
+}
+.wrapper .row:after {
+  content: '';
+  display: table;
+  clear: both;
+}
+.wrapper .row .col-md-3 {
+  /* width: calc(30% - 5px); */
+  /* margin: 30px 15px 0; */
+  /* height: 150px; */
+  /* background-size: cover; */
+  /* background-position: center center; */
+  float: left;
+  /* box-shadow: 0 15px 10px 1px rgba(0, 0, 0, 0.5); */
+}
+.wrapper .row .col-md-3:nth-child(1n + 13) {
+  max-height: 0;
+  display: none;
+  transition: all 0.2s ease-in !important;
+}
+.wrapper .btn-area {
+  display: block;
+  background: #23232c;
+  color: #fff;
+  cursor: pointer;
+  text-align: center;
+  font-weight: 500;
+  width: 180px;
+  line-height: 50px;
+  margin: 50px auto 0;
+  padding: 0.4rem 0;
+}
+.wrapper .btn-area .btn2 {
+  display: none;
+}
+.wrapper #btnBox {
+  display: none;
+}
+.wrapper #btnBox:checked ~ .row .col-md-3:nth-child(1n + 13) {
+  max-height: 1000px;
+  display: block;
+  transition: all 0.2s ease-in !important;
+}
+.wrapper #btnBox:checked ~ .btn-area .btn2 {
+  display: block;
+}
+.wrapper #btnBox:checked ~ .btn-area .btn1 {
+  display: none;
+}
+
+.back_to_top {
+  position: fixed;
+  bottom: 2rem;
+  right: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 50px;
+  display: inline-block;
+  background-color: black;
+  box-shadow: 0px 0px 18px 0px rgba(61, 61, 61, 0.205);
+}
+
+.box {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  transition: all 0.4s ease-in-out;
+}
+
+.box .box_icon {
+  position: absolute;
+  top: 40%;
+  left: -3rem;
+  text-align: center;
+  transform: translateY(-50%);
+  z-index: 5;
+  transition: all 0.4s ease-in-out;
+}
+
+.box .box_icon ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.box .box_icon ul li {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  background: #000;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+}
+.box .box_icon ul li button {
+  background: none;
+  border: none;
+}
+
+.box:hover .box_icon {
+  left: 10px;
+  visibility: visible;
+}
+
+.box:hover {
+  box-shadow: 0px 0px 11px 0px rgba(0, 0, 0, 0.75);
+  border-radius: 0.5rem;
+  transform: translateY(-10px);
+}
+
+@media (max-width: 767px) {
+  .btn-mobile-nav {
+    visibility: visible;
+    z-index: 1000;
+  }
+
+  .main-nav {
+    background-color: rgba(255, 255, 255, 0.9);
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(10px);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    transform: translateX(-100%);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.5s ease-in;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    visibility: hidden;
+    z-index: 999;
+  }
+
+  .nav-open .main-nav {
+    opacity: 1;
+
+    pointer-events: auto;
+
+    visibility: visible;
+
+    transform: translateX(0);
+  }
+
+  .nav-open .icon-mobile-nav.close {
+    display: block;
+  }
+  .nav-open .icon-mobile-nav.open {
+    display: none;
+  }
+
+  .main-nav-list {
+    flex-direction: column;
+    gap: 4.8rem;
+  }
+
+  .box .box_icon {
+    display: none;
+  }
+
+  .sticky .header {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: 8rem;
+    padding-top: 0;
+    padding-bottom: 0;
+    background-color: rgba(255, 255, 255, 0.7);
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+    box-shadow: 0px 10px 33px 0px rgba(0, 0, 0, 0.233);
+  }
+
+  .sticky .carousel {
+    margin-top: 9.6rem;
+  }
+}
+@media (max-width: 991px) {
+  .box:hover {
+    box-shadow: 0px 0px 11px 0px transparent;
+    border-radius: 0.25rem;
+  }
+}
